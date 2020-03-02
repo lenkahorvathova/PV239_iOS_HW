@@ -13,6 +13,7 @@
 		AF5143BD240831DC004A9EE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF5143BB240831DC004A9EE9 /* Main.storyboard */; };
 		AF5143BF240831DF004A9EE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF5143BE240831DF004A9EE9 /* Assets.xcassets */; };
 		AF5143C2240831DF004A9EE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF5143C0240831DF004A9EE9 /* LaunchScreen.storyboard */; };
+		AF5143CA24094B91004A9EE9 /* CounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5143C924094B91004A9EE9 /* CounterController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		AF5143BE240831DF004A9EE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF5143C1240831DF004A9EE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF5143C3240831DF004A9EE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF5143C924094B91004A9EE9 /* CounterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				AF5143B7240831DC004A9EE9 /* SceneDelegate.swift */,
 				AF5143B9240831DC004A9EE9 /* ViewController.swift */,
 				AF5143BB240831DC004A9EE9 /* Main.storyboard */,
+				AF5143C924094B91004A9EE9 /* CounterController.swift */,
 				AF5143BE240831DF004A9EE9 /* Assets.xcassets */,
 				AF5143C0240831DF004A9EE9 /* LaunchScreen.storyboard */,
 				AF5143C3240831DF004A9EE9 /* Info.plist */,
@@ -140,6 +143,7 @@
 			files = (
 				AF5143BA240831DC004A9EE9 /* ViewController.swift in Sources */,
 				AF5143B6240831DC004A9EE9 /* AppDelegate.swift in Sources */,
+				AF5143CA24094B91004A9EE9 /* CounterController.swift in Sources */,
 				AF5143B8240831DC004A9EE9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
