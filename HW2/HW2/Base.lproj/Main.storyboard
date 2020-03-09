@@ -285,7 +285,6 @@
                     <tabBarItem key="tabBarItem" title="Scrollable" id="Gfe-gZ-rKq"/>
                     <connections>
                         <outlet property="heightConstraint" destination="fR6-iA-Owh" id="HBz-rp-Y8j"/>
-                        <outlet property="rectangle" destination="qIM-CS-6Cq" id="JHF-Oa-buA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2dO-9N-j0Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

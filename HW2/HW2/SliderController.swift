@@ -10,7 +10,6 @@
 import UIKit
 
 class SliderController: UIViewController {
-    @IBOutlet weak var rectangle: UIView!
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
@@ -18,7 +17,7 @@ class SliderController: UIViewController {
     }
 
     @IBAction func heightChanged(_ slider: UISlider) {
-        heightConstraint?.constant = CGFloat(round(slider.value))
+        heightConstraint?.constant = CGFloat(slider.value)
     }
     
 }
