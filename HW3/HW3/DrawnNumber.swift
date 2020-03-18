@@ -9,6 +9,6 @@
 import UIKit
 
 struct DrawnNumber {
-    var value: Int = 0
+    var value = 0
     var color: UIColor = .red
 }
