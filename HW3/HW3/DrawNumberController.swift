@@ -7,26 +7,42 @@
 //
 
 import UIKit
+import Alamofire
 
 class DrawNumberController: UIViewController {
     weak var numbersListDelegate: NumbersListDelegate?
+    weak var loadNumberDelegate: LoadNumberDelegate?
     
     @IBAction func clickedRedButton(_ sender: UIButton?) {
-        generate(color: .red, interval: 1...10)
+        generate(color: .red, min: 1, max: 10)
     }
     
     @IBAction func clickedGreenButton(_ sender: UIButton?) {
-        generate(color: .green, interval: 1...50)
+        generate(color: .green, min: 1, max: 50)
     }
     
     @IBAction func clickedBlueButton(_ sender: UIButton?) {
-        generate(color: .blue, interval: 11...49)
+        generate(color: .blue, min: 11, max: 49)
     }
     
-    private func generate(color: UIColor, interval: ClosedRange<Int>) {
-      let drawnNumber = DrawnNumber(value: Int.random(in: interval), color: color)
-      numbersListDelegate?.add(number: drawnNumber)
-
-      dismiss(animated: true)
+    private func generate(color: UIColor, min: Int, max: Int) {
+        dismiss(animated: true)
+        
+        self.loadNumberDelegate?.startLoading()
+        
+        let URLString = "https://www.random.org/integers/?num=1&min=\(min)&max=\(max)&base=10&format=plain&col=1"
+        AF.request(URLString).responseJSON {
+            response in switch response.result {
+                case .success(_):
+                    if let value = response.value as? Int {
+                        let drawnNumber = DrawnNumber(value: value, color: color)
+                        self.numbersListDelegate?.add(number: drawnNumber)
+                    }
+                    self.loadNumberDelegate?.stopLoading()
+                case .failure(let error):
+                    print(error)
+                    self.loadNumberDelegate?.stopLoading()
+            }
+        }
     }
 }
