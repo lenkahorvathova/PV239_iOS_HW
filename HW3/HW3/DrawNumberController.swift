@@ -30,8 +30,8 @@ class DrawNumberController: UIViewController {
         
         self.loadNumberDelegate?.startLoading()
         
-        let URLString = "https://www.random.org/integers/?num=1&min=\(min)&max=\(max)&base=10&format=plain&col=1"
-        AF.request(URLString).responseJSON {
+        let urlString = "https://www.random.org/integers/?num=1&min=\(min)&max=\(max)&base=10&format=plain&col=1"
+        AF.request(urlString).responseJSON {
             response in switch response.result {
                 case .success(_):
                     if let value = response.value as? Int {

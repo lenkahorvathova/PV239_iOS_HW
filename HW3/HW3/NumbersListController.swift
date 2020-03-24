@@ -22,8 +22,7 @@ private let DRAW_NUMBER_SEGUE_ID = "drawNumberSegue"
 class NumbersListController: UIViewController {
     private var numbers = [DrawnNumber]()
     @IBOutlet weak var numbersCollectionView: UICollectionView!
-    @IBOutlet weak var loadingView: UIView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,26 +51,13 @@ extension NumbersListController: NumbersListDelegate {
 
 extension NumbersListController: LoadNumberDelegate {
     func startLoading() {
-        let loadingViewTemp = UIView.init(frame: view.bounds)
-        loadingViewTemp.backgroundColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.1)
-        loadingViewTemp.isUserInteractionEnabled = false
-        
-        let activityIndicatorTemp = UIActivityIndicatorView.init(style: .large)
-        activityIndicatorTemp.startAnimating()
-        activityIndicatorTemp.center = loadingViewTemp.center
-        
-        loadingViewTemp.addSubview(activityIndicatorTemp)
-        view.addSubview(loadingViewTemp)
-        
-        self.activityIndicator = activityIndicatorTemp
-        self.loadingView = loadingViewTemp
+        spinner.isHidden = false
+        numbersCollectionView.isUserInteractionEnabled = false
     }
 
     func stopLoading() {
-        activityIndicator?.stopAnimating()
-
-        loadingView?.removeFromSuperview()
-        loadingView = nil
+        spinner.isHidden = true
+        numbersCollectionView.isUserInteractionEnabled = true
     }
 }
 
@@ -92,9 +78,9 @@ extension NumbersListController: UICollectionViewDataSource {
         let number = numbers[indexPath.item]
         
         cell.numberLabel.text = String(number.value)
-        cell.layer.cornerRadius =  cell.frame.width/2
-        cell.layer.masksToBounds = true
-        cell.backgroundColor = number.color
+        cell.contentView.layer.cornerRadius =  cell.frame.width/2
+        cell.contentView.layer.masksToBounds = true
+        cell.contentView.backgroundColor = number.color
     
         return cell
     }
@@ -105,19 +91,21 @@ extension NumbersListController: UICollectionViewDelegate {
         let cell = collectionView.cellForItem(at: indexPath)
         
         UIView.animate(
-            withDuration: 2.0,
+            withDuration: 0.3,
             delay: 0,
+            options: [.allowAnimatedContent, .beginFromCurrentState],
             animations: {
                 let shrink = CGAffineTransform(scaleX: 0.01, y: 0.01);
                 let rotate = CGAffineTransform(rotationAngle: CGFloat.pi)
-                cell?.alpha = 0
-                cell?.transform = shrink.concatenating(rotate)
+                cell?.contentView.alpha = 0
+                cell?.contentView.transform = shrink.concatenating(rotate)
             },
-            completion: {
-                (finished: Bool) in
-                    self.numbers.remove(at: indexPath.item)
-                    collectionView.deleteItems(at: [indexPath])
+            completion: { _ in
+                cell?.contentView.alpha = 1
+                cell?.contentView.transform = .identity
             }
         )
+        self.numbers.remove(at: indexPath.item)
+        collectionView.deleteItems(at: [indexPath])
     }
 }

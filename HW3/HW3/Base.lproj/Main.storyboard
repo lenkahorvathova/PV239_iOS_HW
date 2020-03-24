@@ -25,6 +25,12 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <activityIndicatorView key="backgroundView" hidden="YES" opaque="NO" alpha="0.40000000000000002" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" id="gIS-Gm-KCL">
+                                    <rect key="frame" x="0.0" y="0.0" width="355" height="670"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <rect key="contentStretch" x="0.0" y="0.0" width="0.65000000000000002" height="1"/>
+                                </activityIndicatorView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellReuseID" id="Jl1-ak-6hr" customClass="NumberCell" customModule="HW3" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -72,6 +78,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="numbersCollectionView" destination="fML-JT-VBc" id="UcM-aN-3Pg"/>
+                        <outlet property="spinner" destination="gIS-Gm-KCL" id="xgc-Sg-NzM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tMP-K8-zYQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
